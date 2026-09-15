@@ -8,6 +8,7 @@ app.use(express.json());
 
 app.get("/", (req, res) => res.send("Exam Distribution API running"));
 app.use("/api/exam", require("./routes/exam.routes"));
+app.use("/api/auth", require("./routes/auth.routes"));
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));

@@ -1,0 +1,44 @@
+.container { max-width: 480px; margin: 0 auto; padding: 2rem 1rem; }
+.title { font-size: 1.8rem; font-weight: 700; margin-bottom: 0.25rem; letter-spacing: -0.02em; }
+.subtitle { color: #888; font-size: 0.95rem; margin-bottom: 2rem; }
+.card { 
+  background: #111113; 
+  padding: 2.5rem; 
+  border-radius: 12px; 
+  border: 1px solid #222; 
+  box-shadow: 0 8px 30px rgba(0,0,0,0.4);
+}
+.form { display: flex; flex-direction: column; gap: 1.2rem; }
+.field { display: flex; flex-direction: column; gap: 0.4rem; }
+.label { color: #a1a1aa; font-weight: 500; font-size: 0.85rem; }
+.input { 
+  padding: 0.75rem 1rem; 
+  border-radius: 8px; 
+  border: 1px solid #2a2a2a; 
+  background: #09090b; 
+  color: #fff; 
+  font-family: inherit;
+  font-size: 0.95rem;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.input:focus {
+  outline: none;
+  border-color: #555;
+  box-shadow: 0 0 0 2px rgba(255,255,255,0.1);
+}
+.btn { 
+  padding: 0.85rem; 
+  border-radius: 8px; 
+  background: #fff; 
+  color: #000; 
+  font-weight: 600; 
+  cursor: pointer; 
+  border: none; 
+  transition: all 0.2s ease; 
+  font-family: inherit; 
+  font-size: 0.95rem;
+}
+.btn:hover:not(:disabled) { background: #e5e5e5; transform: translateY(-1px); }
+.btn:active:not(:disabled) { transform: translateY(0); }
+.btn:disabled { opacity: 0.6; cursor: not-allowed; }
+.error { color: #ef4444; font-size: 0.85rem; }

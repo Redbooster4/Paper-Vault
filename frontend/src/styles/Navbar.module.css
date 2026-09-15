@@ -1,0 +1,36 @@
+.nav {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 32px; height: 64px;
+  background: #09090b;
+  border-bottom: 1px solid #1f1f22;
+  position: sticky; top: 0; z-index: 10;
+}
+.brand { 
+  font-weight: 800; font-size: 1.25rem; color: #fff; 
+  letter-spacing: -0.02em;
+}
+.right { display: flex; align-items: center; gap: 16px; }
+.wallet {
+  background: #111113; border: 1px solid #27272a; border-radius: 8px;
+  padding: 6px 12px; color: #a1a1aa; font-size: 0.85rem; font-family: monospace; cursor: pointer;
+  transition: all 0.2s;
+}
+.wallet:hover { color: #fff; border-color: #3f3f46; background: #18181b; }
+.badge {
+  font-size: 0.7rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em;
+  background: #27272a; padding: 4px 10px; border-radius: 12px; color: #e4e4e7;
+}
+.name { font-size: 0.9rem; color: #d4d4d8; font-weight: 500; }
+.logout {
+  background: transparent; border: 1px solid #27272a; border-radius: 8px;
+  padding: 6px 14px; color: #a1a1aa; font-size: 0.85rem; cursor: pointer;
+  transition: all 0.2s;
+}
+.logout:hover { color: #fff; border-color: #3f3f46; background: #18181b; }
+.link { color: #a1a1aa; font-size: 0.9rem; font-weight: 500; transition: color 0.2s; }
+.link:hover { color: #fff; }
+.cta {
+  background: #fff; color: #000; padding: 8px 16px; border-radius: 8px;
+  font-size: 0.9rem; font-weight: 600; transition: opacity 0.2s;
+}
+.cta:hover { opacity: 0.9; }

@@ -1,0 +1,29 @@
+.timer {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: #111113;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  border: 1px solid #27272a;
+}
+.unit {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 30px;
+}
+.value { font-family: monospace; font-size: 1.1rem; color: #fff; font-weight: 600; }
+.label { font-size: 0.65rem; color: #a1a1aa; text-transform: uppercase; letter-spacing: 0.05em; }
+.sep { color: #555; font-size: 1.1rem; font-weight: 600; padding-bottom: 0.5rem; }
+.released {
+  color: #4ade80;
+  font-weight: 600;
+  font-size: 0.9rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(74, 222, 128, 0.1);
+  padding: 4px 10px;
+  border-radius: 12px;
+}

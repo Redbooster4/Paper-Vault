@@ -1,0 +1,64 @@
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+.title {
+  font-size: 2.2rem;
+  font-weight: 800;
+  margin-bottom: 0.5rem;
+  letter-spacing: -0.02em;
+}
+.subtitle {
+  color: #a1a1aa;
+  margin-bottom: 2.5rem;
+  font-size: 1rem;
+}
+.walletInfo {
+  background: #111113;
+  padding: 1.25rem 1.5rem;
+  border-radius: 12px;
+  border: 1px solid #27272a;
+  margin-bottom: 2.5rem;
+  font-size: 0.95rem;
+  color: #a1a1aa;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.walletInfo code {
+  color: #e4e4e7;
+  font-family: monospace;
+  background: #18181b;
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+.card {
+  background: #111113;
+  border: 1px solid #27272a;
+  border-radius: 12px;
+  padding: 2rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: block;
+}
+.card:hover {
+  background: #18181b;
+  border-color: #3f3f46;
+  transform: translateY(-2px);
+}
+.card h2 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+  color: #fff;
+}
+.card p {
+  color: #a1a1aa;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}

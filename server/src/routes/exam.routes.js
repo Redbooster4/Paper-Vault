@@ -2,6 +2,7 @@ const express = require("express");
 const multer = require("multer");
 const { ethers } = require("ethers");
 const router = express.Router();
+
 const upload = multer();
 
 const { encryptFile, decryptFile } = require("../services/crypto.service");
@@ -12,6 +13,7 @@ const {
   checkAccess,
   logAccess,
   getPaper,
+  getAuditLogs,
 } = require("../services/blockchain.service");
 
 // Exam board uploads a paper
@@ -30,7 +32,8 @@ router.post("/upload", upload.single("paper"), async (req, res) => {
     await registerPaper(examId, fileName, releaseTimestamp);
 
     res.json({ success: true, examId, storedAs: fileName });
-  } catch (err) {
+  } 
+  catch (err){
     console.error(err);
     res.status(500).json({ error: err.message });
   }
@@ -43,7 +46,8 @@ router.post("/grant-access", async (req, res) => {
     const examId = ethers.id(examName);
     await grantAccess(examId, address);
     res.json({ success: true });
-  } catch (err) {
+  } 
+  catch (err){
     console.error(err);
     res.status(500).json({ error: err.message });
   }
@@ -80,6 +84,16 @@ router.get("/info/:examName", async (req, res) => {
     const examId = ethers.id(req.params.examName);
     const paper = await getPaper(examId);
     res.json(paper);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
+// Get all on-chain events
+router.get("/audit-logs", async (req, res) => {
+  try {
+    const logs = await getAuditLogs();
+    res.json(logs);
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
