@@ -38,9 +38,6 @@ function AppRoutes() {
         {/* Student */}
         <Route path="/student" element={<ProtectedRoute requiredRole="student"><StudentDashboard /></ProtectedRoute>} />
         <Route path="/student/retrieve" element={<ProtectedRoute requiredRole="student"><RetrievePaper /></ProtectedRoute>} />
-
-        {/* 404 */}
-        <Route path="*" element={<NotFound />} />
       </Route>
     </Routes>
   );

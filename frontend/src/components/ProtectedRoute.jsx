@@ -4,6 +4,10 @@ import { useAuth } from '../context/AuthContext';
 export default function ProtectedRoute({ children, requiredRole }) {
   const { isAuthenticated, user, loading } = useAuth();
 
+  // TEMPORARILY DISABLED FOR TESTING
+  return children;
+  
+  /*
   if (loading) {
     return <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>Loading...</div>;
   }
@@ -17,4 +21,5 @@ export default function ProtectedRoute({ children, requiredRole }) {
   }
 
   return children;
+  */
 }

@@ -1,5 +1,6 @@
 import { NavLink } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
+import styles from '../styles/Sidebar.module.css';
 
 const links = {
   admin: [
@@ -19,13 +20,13 @@ export default function Sidebar() {
   const items = links[user?.role] || [];
 
   return (
-    <aside className="sidebar">
+    <aside className={styles.sidebar}>
       {items.map(({ to, label }) => (
         <NavLink
           key={to}
           to={to}
           end={to === '/admin' || to === '/student'}
-          className={({ isActive }) => `${'link'} ${isActive ? 'active' : ''}`}
+          className={({ isActive }) => `${styles.link} ${isActive ? styles.active : ''}`}
         >
           {label}
         </NavLink>

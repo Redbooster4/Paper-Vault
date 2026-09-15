@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { grantAccess } from '../../services/examService';
 import toast from 'react-hot-toast';
+import styles from '../../styles/GrantAccess.module.css';
 
 export default function GrantAccess() {
   const [examName, setExamName] = useState('');
@@ -66,19 +67,19 @@ export default function GrantAccess() {
   };
 
   return (
-    <div className="container">
-      <h1 className="title"> Grant Access</h1>
-      <p className="subtitle">
+    <div className={styles.container}>
+      <h1 className={styles.title}> Grant Access</h1>
+      <p className={styles.subtitle}>
         Authorize wallet addresses to retrieve an exam paper after it's released.
       </p>
 
-      <form onSubmit={bulkMode ? handleBulkGrant : handleSingleGrant} className="form">
-        <div className="field">
-          <label htmlFor="examName" className="label">Exam Name</label>
+      <form onSubmit={bulkMode ? handleBulkGrant : handleSingleGrant} className={styles.form}>
+        <div className={styles.field}>
+          <label htmlFor="examName" className={styles.label}>Exam Name</label>
           <input
             type="text"
             id="examName"
-            className="input"
+            className={styles.input}
             value={examName}
             onChange={(e) => setExamName(e.target.value)}
             placeholder="e.g. CS101-Final-2026"
@@ -86,17 +87,17 @@ export default function GrantAccess() {
           />
         </div>
 
-        <div className="modeToggle">
+        <div className={styles.modeToggle}>
           <button
             type="button"
-            className={`${'modeBtn'} ${!bulkMode ? 'active' : ''}`}
+            className={`${styles.modeBtn} ${!bulkMode ? styles.active : ''}`}
             onClick={() => setBulkMode(false)}
           >
             Single Address
           </button>
           <button
             type="button"
-            className={`${'modeBtn'} ${bulkMode ? 'active' : ''}`}
+            className={`${styles.modeBtn} ${bulkMode ? styles.active : ''}`}
             onClick={() => setBulkMode(true)}
           >
             Bulk Mode
@@ -104,11 +105,11 @@ export default function GrantAccess() {
         </div>
 
         {bulkMode ? (
-          <div className="field">
-            <label htmlFor="bulkAddresses" className="label">Wallet Addresses (one per line)</label>
+          <div className={styles.field}>
+            <label htmlFor="bulkAddresses" className={styles.label}>Wallet Addresses (one per line)</label>
             <textarea
               id="bulkAddresses"
-              className="textarea"
+              className={styles.textarea}
               value={bulkAddresses}
               onChange={(e) => setBulkAddresses(e.target.value)}
               placeholder={"0x1234...abcd\n0x5678...efgh\n0x9abc...ijkl"}
@@ -117,39 +118,39 @@ export default function GrantAccess() {
             />
           </div>
         ) : (
-          <div className="field">
-            <label htmlFor="address" className="label">Wallet Address</label>
+          <div className={styles.field}>
+            <label htmlFor="address" className={styles.label}>Wallet Address</label>
             <input
               type="text"
               id="address"
-              className="input"
+              className={styles.input}
               value={address}
               onChange={(e) => setAddress(e.target.value)}
               placeholder="0x..."
               disabled={loading}
             />
             {address && !isValidAddress(address) && (
-              <span className="error">Invalid Ethereum address format</span>
+              <span className={styles.error}>Invalid Ethereum address format</span>
             )}
           </div>
         )}
 
-        <button type="submit" className="submitBtn" disabled={loading}>
+        <button type="submit" className={styles.submitBtn} disabled={loading}>
           {loading ? 'Granting Access...' : 'Grant Access'}
         </button>
       </form>
 
       {results.length > 0 && (
-        <div className="results">
-          <h3 className="resultsTitle">Results</h3>
-          <div className="resultsList">
+        <div className={styles.results}>
+          <h3 className={styles.resultsTitle}>Results</h3>
+          <div className={styles.resultsList}>
             {results.map((r, i) => (
-              <div key={i} className={`${'resultItem'} ${r.status === 'success' ? 'resultSuccess' : 'resultError'}`}>
+              <div key={i} className={`${styles.resultItem} ${r.status === 'success' ? styles.resultSuccess : styles.resultError}`}>
                 {r.status === 'success' ? '✅' : '❌'}
-                <span className="resultAddr">
+                <span className={styles.resultAddr}>
                   {r.address.slice(0, 10)}...{r.address.slice(-6)}
                 </span>
-                {r.error && <span className="resultErrMsg">{r.error}</span>}
+                {r.error && <span className={styles.resultErrMsg}>{r.error}</span>}
               </div>
             ))}
           </div>

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import toast from 'react-hot-toast';
+import styles from '../styles/shared.module.css';
 
 export default function Login() {
   const [email, setEmail] = useState('');
@@ -26,34 +27,34 @@ export default function Login() {
   };
 
   return (
-    <div className="container">
-      <div className="card" style={{ maxWidth: '400px', margin: '4rem auto' }}>
-        <h1 className="title" style={{ fontSize: '1.75rem' }}>Sign In</h1>
-        <p className="subtitle" style={{ marginBottom: '1.5rem' }}>Access your Paper Vault account</p>
-        <form onSubmit={handleSubmit} className="form">
-          <div className="field">
-            <label className="label">Email</label>
+    <div className={styles.container}>
+      <div className={styles.card} style={{ maxWidth: '400px', margin: '4rem auto' }}>
+        <h1 className={styles.title} style={{ fontSize: '1.75rem' }}>Sign In</h1>
+        <p className={styles.subtitle} style={{ marginBottom: '1.5rem' }}>Access your Paper Vault account</p>
+        <form onSubmit={handleSubmit} className={styles.form}>
+          <div className={styles.field}>
+            <label className={styles.label}>Email</label>
             <input 
               type="email" 
-              className="input" 
+              className={styles.input} 
               value={email} 
               onChange={e => setEmail(e.target.value)} 
               placeholder="you@example.com" 
               disabled={loading} 
             />
           </div>
-          <div className="field">
-            <label className="label">Password</label>
+          <div className={styles.field}>
+            <label className={styles.label}>Password</label>
             <input 
               type="password" 
-              className="input" 
+              className={styles.input} 
               value={password} 
               onChange={e => setPassword(e.target.value)} 
               placeholder="••••••••" 
               disabled={loading} 
             />
           </div>
-          <button type="submit" className="btn" disabled={loading} style={{ marginTop: '1rem' }}>
+          <button type="submit" className={styles.btn} disabled={loading} style={{ marginTop: '1rem' }}>
             {loading ? 'Signing in...' : 'Sign In'}
           </button>
         </form>

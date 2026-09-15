@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import toast from 'react-hot-toast';
+import styles from '../styles/shared.module.css';
 
 export default function Register() {
   const [username, setUsername] = useState('');
@@ -29,39 +30,39 @@ export default function Register() {
   };
 
   return (
-    <div className="container">
-      <div className="card" style={{ maxWidth: '400px', margin: '4rem auto' }}>
-        <h1 className="title" style={{ fontSize: '1.75rem' }}>Create Account</h1>
-        <p className="subtitle" style={{ marginBottom: '1.5rem' }}>Join Paper Vault</p>
-        <form onSubmit={handleSubmit} className="form">
-          <div className="field">
-            <label className="label">Username</label>
-            <input className="input" value={username} onChange={e => setUsername(e.target.value)} disabled={loading} />
+    <div className={styles.container}>
+      <div className={styles.card} style={{ maxWidth: '400px', margin: '4rem auto' }}>
+        <h1 className={styles.title} style={{ fontSize: '1.75rem' }}>Create Account</h1>
+        <p className={styles.subtitle} style={{ marginBottom: '1.5rem' }}>Join Paper Vault</p>
+        <form onSubmit={handleSubmit} className={styles.form}>
+          <div className={styles.field}>
+            <label className={styles.label}>Username</label>
+            <input className={styles.input} value={username} onChange={e => setUsername(e.target.value)} disabled={loading} />
           </div>
-          <div className="field">
-            <label className="label">Email</label>
-            <input type="email" className="input" value={email} onChange={e => setEmail(e.target.value)} disabled={loading} />
+          <div className={styles.field}>
+            <label className={styles.label}>Email</label>
+            <input type="email" className={styles.input} value={email} onChange={e => setEmail(e.target.value)} disabled={loading} />
           </div>
-          <div className="field">
-            <label className="label">Password</label>
-            <input type="password" className="input" value={password} onChange={e => setPassword(e.target.value)} disabled={loading} />
+          <div className={styles.field}>
+            <label className={styles.label}>Password</label>
+            <input type="password" className={styles.input} value={password} onChange={e => setPassword(e.target.value)} disabled={loading} />
           </div>
-          <div className="field" style={{ display: 'flex', gap: '10px', marginTop: '0.5rem' }}>
-            <label className="label" style={{ alignSelf: 'center', marginRight: '10px' }}>Role:</label>
+          <div className={styles.field} style={{ display: 'flex', gap: '10px', marginTop: '0.5rem' }}>
+            <label className={styles.label} style={{ alignSelf: 'center', marginRight: '10px' }}>Role:</label>
             <button 
               type="button" 
-              className="btn" 
+              className={styles.btn} 
               style={{ flex: 1, background: role === 'student' ? '#fff' : 'transparent', color: role === 'student' ? '#000' : '#fff', border: '1px solid #555' }}
               onClick={() => setRole('student')}
             >Student</button>
             <button 
               type="button" 
-              className="btn" 
+              className={styles.btn} 
               style={{ flex: 1, background: role === 'admin' ? '#fff' : 'transparent', color: role === 'admin' ? '#000' : '#fff', border: '1px solid #555' }}
               onClick={() => setRole('admin')}
             >Exam Board</button>
           </div>
-          <button type="submit" className="btn" disabled={loading} style={{ marginTop: '1rem' }}>
+          <button type="submit" className={styles.btn} disabled={loading} style={{ marginTop: '1rem' }}>
             {loading ? 'Creating...' : 'Create Account'}
           </button>
         </form>

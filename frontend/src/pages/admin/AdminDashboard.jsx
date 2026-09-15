@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { FiUpload, FiUserCheck, FiActivity, FiFileText, FiSearch } from 'react-icons/fi';
 import { getPaperInfo } from '../../services/examService';
 import CountdownTimer from '../../components/CountdownTimer';
 import toast from 'react-hot-toast';
@@ -36,21 +35,21 @@ export default function AdminDashboard() {
       {/* Quick Actions */}
       <div className={styles.actions}>
         <Link to="/admin/upload" className={styles.actionCard}>
-          <div className={styles.actionIcon}><FiUpload size={24} /></div>
+          <div className={styles.actionIcon}></div>
           <div>
             <h3>Upload Paper</h3>
             <p>Encrypt and register a new exam paper</p>
           </div>
         </Link>
         <Link to="/admin/grant-access" className={styles.actionCard}>
-          <div className={styles.actionIcon}><FiUserCheck size={24} /></div>
+          <div className={styles.actionIcon}></div>
           <div>
             <h3>Grant Access</h3>
             <p>Authorize wallets to retrieve papers</p>
           </div>
         </Link>
         <Link to="/admin/audit-log" className={styles.actionCard}>
-          <div className={styles.actionIcon}><FiActivity size={24} /></div>
+          <div className={styles.actionIcon}></div>
           <div>
             <h3>Audit Log</h3>
             <p>View blockchain event history</p>
@@ -60,7 +59,7 @@ export default function AdminDashboard() {
 
       {/* Quick Paper Lookup */}
       <div className={styles.lookupSection}>
-        <h2 className={styles.sectionTitle}><FiFileText size={20} /> Quick Paper Lookup</h2>
+        <h2 className={styles.sectionTitle}> Quick Paper Lookup</h2>
         <form onSubmit={handleSearch} className={styles.searchForm}>
           <input
             type="text"
@@ -71,7 +70,7 @@ export default function AdminDashboard() {
             disabled={searching}
           />
           <button type="submit" className={styles.searchBtn} disabled={searching || !searchName.trim()}>
-            <FiSearch size={18} />
+            
             {searching ? 'Searching...' : 'Look Up'}
           </button>
         </form>

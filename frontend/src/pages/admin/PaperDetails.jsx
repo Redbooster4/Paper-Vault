@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import { getPaperInfo } from '../../services/examService';
 import CountdownTimer from '../../components/CountdownTimer';
 import toast from 'react-hot-toast';
+import styles from '../../styles/PaperDetails.module.css';
 
 export default function PaperDetails() {
   const { examName: paramName } = useParams();
@@ -26,48 +27,48 @@ export default function PaperDetails() {
   };
 
   return (
-    <div className="container">
-      <h1 className="title"> Paper Details</h1>
-      <p className="subtitle">Look up on-chain metadata for any registered exam paper.</p>
+    <div className={styles.container}>
+      <h1 className={styles.title}> Paper Details</h1>
+      <p className={styles.subtitle}>Look up on-chain metadata for any registered exam paper.</p>
 
-      <form onSubmit={handleLookup} className="searchForm">
+      <form onSubmit={handleLookup} className={styles.searchForm}>
         <input
           type="text"
           value={examName}
           onChange={(e) => setExamName(e.target.value)}
           placeholder="Enter exam name..."
-          className="input"
+          className={styles.input}
           disabled={loading}
         />
-        <button type="submit" className="searchBtn" disabled={loading || !examName.trim()}>
+        <button type="submit" className={styles.searchBtn} disabled={loading || !examName.trim()}>
           
           {loading ? 'Loading...' : 'Look Up'}
         </button>
       </form>
 
       {paper && (
-        <div className="details">
-          <div className="detailRow">
-            <span className="detailLabel">Exam Name</span>
-            <span className="detailValue">{examName}</span>
+        <div className={styles.details}>
+          <div className={styles.detailRow}>
+            <span className={styles.detailLabel}>Exam Name</span>
+            <span className={styles.detailValue}>{examName}</span>
           </div>
-          <div className="detailRow">
-            <span className="detailLabel">Storage Hash</span>
-            <span className="detailValueMono">{paper.ipfsHash}</span>
+          <div className={styles.detailRow}>
+            <span className={styles.detailLabel}>Storage Hash</span>
+            <span className={styles.detailValueMono}>{paper.ipfsHash}</span>
           </div>
-          <div className="detailRow">
-            <span className="detailLabel">Release Time</span>
-            <span className="detailValue">
+          <div className={styles.detailRow}>
+            <span className={styles.detailLabel}>Release Time</span>
+            <span className={styles.detailValue}>
               {new Date(paper.releaseTimestamp * 1000).toLocaleString()}
             </span>
           </div>
-          <div className="detailRow">
-            <span className="detailLabel">Status</span>
+          <div className={styles.detailRow}>
+            <span className={styles.detailLabel}>Status</span>
             <CountdownTimer releaseTimestamp={paper.releaseTimestamp} />
           </div>
-          <div className="detailRow">
-            <span className="detailLabel">Uploaded By</span>
-            <span className="detailValueMono">{paper.uploadedBy}</span>
+          <div className={styles.detailRow}>
+            <span className={styles.detailLabel}>Uploaded By</span>
+            <span className={styles.detailValueMono}>{paper.uploadedBy}</span>
           </div>
         </div>
       )}

@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { uploadPaper } from '../../services/examService';
 import FileDropzone from '../../components/FileDropzone';
 import toast from 'react-hot-toast';
+import styles from '../../styles/UploadPaper.module.css';
 
 export default function UploadPaper() {
   const [file, setFile] = useState(null);
@@ -39,24 +40,24 @@ export default function UploadPaper() {
   };
 
   return (
-    <div className="container">
-      <h1 className="title"> Upload Exam Paper</h1>
-      <p className="subtitle">
+    <div className={styles.container}>
+      <h1 className={styles.title}> Upload Exam Paper</h1>
+      <p className={styles.subtitle}>
         Upload a PDF exam paper. It will be AES-256 encrypted and registered on the blockchain.
       </p>
 
-      <form onSubmit={handleSubmit} className="form">
-        <div className="field">
-          <label className="label">Exam Paper (PDF)</label>
+      <form onSubmit={handleSubmit} className={styles.form}>
+        <div className={styles.field}>
+          <label className={styles.label}>Exam Paper (PDF)</label>
           
         </div>
 
-        <div className="field">
-          <label htmlFor="examName" className="label">Exam Name</label>
+        <div className={styles.field}>
+          <label htmlFor="examName" className={styles.label}>Exam Name</label>
           <input
             type="text"
             id="examName"
-            className="input"
+            className={styles.input}
             value={examName}
             onChange={(e) => setExamName(e.target.value)}
             placeholder="e.g. CS101-Final-2026"
@@ -64,36 +65,36 @@ export default function UploadPaper() {
           />
         </div>
 
-        <div className="field">
-          <label htmlFor="releaseDate" className="label">Release Date & Time</label>
+        <div className={styles.field}>
+          <label htmlFor="releaseDate" className={styles.label}>Release Date & Time</label>
           <input
             type="datetime-local"
             id="releaseDate"
-            className="input"
+            className={styles.input}
             value={releaseDate}
             onChange={(e) => setReleaseDate(e.target.value)}
             disabled={loading}
           />
-          <span className="hint">Paper will be accessible only after this time</span>
+          <span className={styles.hint}>Paper will be accessible only after this time</span>
         </div>
 
-        <button type="submit" className="submitBtn" disabled={loading}>
+        <button type="submit" className={styles.submitBtn} disabled={loading}>
           {loading ? 'Uploading & Registering...' : 'Upload & Register on Chain'}
         </button>
       </form>
 
       {result && (
-        <div className="result">
+        <div className={styles.result}>
           
           <h3>Paper Registered Successfully</h3>
-          <div className="resultMeta">
+          <div className={styles.resultMeta}>
             <div>
-              <span className="resultLabel">Exam ID</span>
-              <span className="resultValue">{result.examId}</span>
+              <span className={styles.resultLabel}>Exam ID</span>
+              <span className={styles.resultValue}>{result.examId}</span>
             </div>
             <div>
-              <span className="resultLabel">Stored As</span>
-              <span className="resultValue">{result.storedAs}</span>
+              <span className={styles.resultLabel}>Stored As</span>
+              <span className={styles.resultValue}>{result.storedAs}</span>
             </div>
           </div>
         </div>

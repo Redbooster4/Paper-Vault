@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { getAuditLogs } from '../../services/examService';
-import { FiActivity, FiBox, FiClock, FiFileText } from 'react-icons/fi';
 import styles from '../../styles/AuditLog.module.css';
 
 export default function AuditLog() {
@@ -16,7 +15,7 @@ export default function AuditLog() {
 
   return (
     <div className={styles.container}>
-      <h1 className={styles.title}><FiActivity size={24} /> Chain History</h1>
+      <h1 className={styles.title}> Chain History</h1>
       <p className={styles.subtitle}>Raw on-chain events from the Exam Registry contract.</p>
       
       <div className={styles.card}>
@@ -33,12 +32,12 @@ export default function AuditLog() {
                 </div>
                 <div className={styles.logContent}>
                   <div className={styles.logHeader}>
-                    <strong><FiFileText size={14}/> Exam ID:</strong> <span>{log.examId.slice(0, 10)}...{log.examId.slice(-8)}</span>
+                    <strong> Exam ID:</strong> <span>{log.examId.slice(0, 10)}...{log.examId.slice(-8)}</span>
                   </div>
                   <div className={styles.logDetail}>{log.info}</div>
                   <div className={styles.logFooter}>
-                    <span title="Transaction Hash"><FiActivity size={12}/> {log.tx.slice(0, 10)}...</span>
-                    <span title="Block Number"><FiBox size={12}/> Block {log.block}</span>
+                    <span title="Transaction Hash"> {log.tx.slice(0, 10)}...</span>
+                    <span title="Block Number"> Block {log.block}</span>
                   </div>
                 </div>
               </div>

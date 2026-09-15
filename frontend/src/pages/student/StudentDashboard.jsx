@@ -1,22 +1,23 @@
 import React from 'react';
 import { Link, useOutletContext } from 'react-router-dom';
+import styles from '../../styles/StudentDashboard.module.css';
 
 export default function StudentDashboard() {
   const { account, isConnected } = useOutletContext();
 
   return (
-    <div className="container">
-      <h1 className="title">Student Dashboard</h1>
-      <p className="subtitle">Retrieve your authorized exam papers.</p>
+    <div className={styles.container}>
+      <h1 className={styles.title}>Student Dashboard</h1>
+      <p className={styles.subtitle}>Retrieve your authorized exam papers.</p>
 
       {isConnected && (
-        <p className="walletInfo">
+        <p className={styles.walletInfo}>
           Connected Wallet: <code>{account}</code>
         </p>
       )}
 
-      <div className="grid">
-        <Link to="/student/retrieve" className="card">
+      <div className={styles.grid}>
+        <Link to="/student/retrieve" className={styles.card}>
           <h2>Retrieve Paper</h2>
           <p>Download an exam paper you have access to.</p>
         </Link>

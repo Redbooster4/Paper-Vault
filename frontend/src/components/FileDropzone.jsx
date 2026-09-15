@@ -1,6 +1,4 @@
 import { useState, useRef, useCallback } from 'react';
-import { FiUploadCloud, FiFile, FiX } from 'react-icons/fi';
-import styles from '../styles/FileDropzone.module.css';
 
 export default function FileDropzone({ onFileSelect, accept = '.pdf', disabled = false }) {
   const [dragOver, setDragOver] = useState(false);
@@ -48,7 +46,7 @@ export default function FileDropzone({ onFileSelect, accept = '.pdf', disabled =
 
   return (
     <div
-      className={`${styles.dropzone} ${dragOver ? styles.dragOver : ''} ${disabled ? styles.disabled : ''}`}
+      className={`${'dropzone'} ${dragOver ? 'dragOver' : ''} ${disabled ? 'disabled' : ''}`}
       onDrop={handleDrop}
       onDragOver={handleDragOver}
       onDragLeave={handleDragLeave}
@@ -59,25 +57,25 @@ export default function FileDropzone({ onFileSelect, accept = '.pdf', disabled =
         type="file"
         accept={accept}
         onChange={handleChange}
-        className={styles.hiddenInput}
+        className="hiddenInput"
         disabled={disabled}
       />
       {selectedFile ? (
-        <div className={styles.fileInfo}>
-          <FiFile size={24} className={styles.fileIcon} />
-          <div className={styles.fileMeta}>
-            <span className={styles.fileName}>{selectedFile.name}</span>
-            <span className={styles.fileSize}>{formatSize(selectedFile.size)}</span>
+        <div className="fileInfo">
+          
+          <div className="fileMeta">
+            <span className="fileName">{selectedFile.name}</span>
+            <span className="fileSize">{formatSize(selectedFile.size)}</span>
           </div>
-          <button className={styles.removeBtn} onClick={handleRemove} title="Remove file">
-            <FiX size={18} />
+          <button className="removeBtn" onClick={handleRemove} title="Remove file">
+            
           </button>
         </div>
       ) : (
-        <div className={styles.placeholder}>
-          <FiUploadCloud size={40} className={styles.uploadIcon} />
-          <p className={styles.text}>Drag & drop a PDF here, or click to browse</p>
-          <span className={styles.hint}>Only PDF files accepted</span>
+        <div className="placeholder">
+          
+          <p className="text">Drag & drop a PDF here, or click to browse</p>
+          <span className="hint">Only PDF files accepted</span>
         </div>
       )}
     </div>
