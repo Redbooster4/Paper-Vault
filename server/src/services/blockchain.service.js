@@ -4,6 +4,13 @@ const provider = new ethers.JsonRpcProvider(process.env.RPC_URL);
 const wallet = new ethers.Wallet(process.env.PRIVATE_KEY, provider);
 const contract = new ethers.Contract(process.env.CONTRACT_ADDRESS, abi.abi, wallet);
 
+provider.getCode(process.env.CONTRACT_ADDRESS).then(code => {
+  if (code === "0x") {
+    console.error("CRITICAL ERROR: No contract found at", process.env.CONTRACT_ADDRESS);
+    console.error("Did you restart the hardhat node? You must run: npx hardhat run script/deploy.js --network localhost");
+  }
+});
+
 async function registerPaper(examId, ipfsHash, releaseTimestamp) {
   const tx = await contract.registerPaper(examId, ipfsHash, releaseTimestamp);
   return tx.wait();

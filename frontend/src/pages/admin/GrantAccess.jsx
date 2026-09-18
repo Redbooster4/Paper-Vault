@@ -87,14 +87,14 @@ export default function GrantAccess() {
         <div className={styles.modeToggle}>
           <button
             type="button"
-            className={`${'modeBtn'} ${!bulkMode ? 'active' : ''}`}
+            className={`${styles.modeBtn} ${!bulkMode?styles.active:''}`}
             onClick={() => setBulkMode(false)}
           >
             Single Address
           </button>
           <button
             type="button"
-            className={`${'modeBtn'} ${bulkMode ? 'active' : ''}`}
+            className={`${styles.modeBtn} ${bulkMode?styles.active:''}`}
             onClick={() => setBulkMode(true)}
           >
             Bulk Mode
@@ -142,8 +142,8 @@ export default function GrantAccess() {
           <h3 className={styles.resultsTitle}>Results</h3>
           <div className={styles.resultsList}>
             {results.map((r, i) => (
-              <div key={i} className={`${'resultItem'} ${r.status === 'success' ? 'resultSuccess' : 'resultError'}`}>
-                {r.status === 'success' ? '✅' : '❌'}
+              <div key={i} className={`${styles.resultItem} ${r.status === 'success' ? styles.resultSuccess : styles.resultError}`}>
+                {r.status === 'success' ? '✔' : '✖'}
                 <span className={styles.resultAddr}>
                   {r.address.slice(0, 10)}...{r.address.slice(-6)}
                 </span>
