@@ -4,7 +4,7 @@
 ./blockchain/node_modules
 
 # Compilation output
-/dist
+./frontend/dist
 
 # pnpm deploy output
 /bundle
