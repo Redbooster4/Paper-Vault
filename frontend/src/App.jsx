@@ -22,19 +22,16 @@ function AppRoutes() {
   return (
     <Routes>
       <Route element={<Layout wallet={wallet} />}>
-        {/* Public */}
         <Route path="/" element={<LandingPage />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
 
-        {/* Admin */}
         <Route path="/admin" element={<ProtectedRoute requiredRole="admin"><AdminDashboard /></ProtectedRoute>} />
         <Route path="/admin/upload" element={<ProtectedRoute requiredRole="admin"><UploadPaper /></ProtectedRoute>} />
         <Route path="/admin/grant-access" element={<ProtectedRoute requiredRole="admin"><GrantAccess /></ProtectedRoute>} />
         <Route path="/admin/papers/:examName" element={<ProtectedRoute requiredRole="admin"><PaperDetails /></ProtectedRoute>} />
         <Route path="/admin/audit-log" element={<ProtectedRoute requiredRole="admin"><AuditLog /></ProtectedRoute>} />
 
-        {/* Student */}
         <Route path="/student" element={<ProtectedRoute requiredRole="student"><StudentDashboard /></ProtectedRoute>} />
         <Route path="/student/retrieve" element={<ProtectedRoute requiredRole="student"><RetrievePaper /></ProtectedRoute>} />
       </Route>
