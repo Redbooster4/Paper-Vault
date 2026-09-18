@@ -1,9 +1,8 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import{ Link } from 'react-router-dom';
 import styles from '../styles/LandingPage.module.css';
 
-export default function LandingPage() {
-  return (
+export default function LandingPage(){
+  return(
     <div className={styles.container}>
       <div className={styles.hero}>
         <h1 className={styles.title}>Welcome to Paper Vault</h1>

@@ -15,19 +15,18 @@ const links = {
   ],
 };
 
-export default function Sidebar() {
+export default function Sidebar(){
   const { user } = useAuth();
-  const items = links[user?.role] || [];
+  const items = links[user?.role]||[];
 
-  return (
+  return(
     <aside className={styles.sidebar}>
       {items.map(({ to, label }) => (
         <NavLink
           key={to}
           to={to}
           end={to === '/admin' || to === '/student'}
-          className={({ isActive }) => `${styles.link} ${isActive ? styles.active : ''}`}
-        >
+          className={({ isActive }) => `${styles.link} ${isActive ? styles.active : ''}`}>
           {label}
         </NavLink>
       ))}

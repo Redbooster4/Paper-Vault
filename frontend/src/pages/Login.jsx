@@ -1,36 +1,42 @@
-import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import { useAuth } from '../context/AuthContext';
+import { useState } from 'react';
+import{ Link, useNavigate } from 'react-router-dom';
+import{ useAuth } from '../context/AuthContext';
 import toast from 'react-hot-toast';
 import styles from '../styles/shared.module.css';
 
-export default function Login() {
+export default function Login(){
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
   const { login } = useAuth();
   const navigate = useNavigate();
 
-  const handleSubmit = async (e) => {
+  const handleSubmit=async(e) =>{
     e.preventDefault();
-    if (!email || !password) { toast.error('Fill in all fields'); return; }
+    if(!email || !password){ 
+      toast.error('Fill in all fields'); 
+      return; 
+    }
+
     setLoading(true);
-    try {
+    try{
       const user = await login(email, password);
       toast.success('Welcome back!');
-      navigate(user.role === 'admin' ? '/admin' : '/student');
-    } catch (err) {
-      toast.error(err.response?.data?.error || 'Login failed');
-    } finally {
+      navigate(user.role === 'admin'?'/admin':'/student');
+    } 
+    catch(err){
+      toast.error(err.response?.data?.error);
+    } 
+    finally{
       setLoading(false);
     }
   };
 
-  return (
+  return(
     <div className={styles.container}>
       <div className={styles.card} style={{ maxWidth: '400px', margin: '4rem auto' }}>
         <h1 className={styles.title} style={{ fontSize: '1.75rem' }}>Sign In</h1>
-        <p className={styles.subtitle} style={{ marginBottom: '1.5rem' }}>Access your Paper Vault account</p>
+        
         <form onSubmit={handleSubmit} className={styles.form}>
           <div className={styles.field}>
             <label className={styles.label}>Email</label>
@@ -38,26 +44,30 @@ export default function Login() {
               type="email" 
               className={styles.input} 
               value={email} 
-              onChange={e => setEmail(e.target.value)} 
-              placeholder="you@example.com" 
-              disabled={loading} 
-            />
+              onChange={e => setEmail(e.target.value)}
+              disabled={loading}/>
           </div>
+
           <div className={styles.field}>
             <label className={styles.label}>Password</label>
             <input 
               type="password" 
               className={styles.input} 
               value={password} 
-              onChange={e => setPassword(e.target.value)} 
-              placeholder="••••••••" 
+              onChange={e => setPassword(e.target.value)}
               disabled={loading} 
             />
           </div>
-          <button type="submit" className={styles.btn} disabled={loading} style={{ marginTop: '1rem' }}>
-            {loading ? 'Signing in...' : 'Sign In'}
+
+          <button
+            type="submit" 
+            className={styles.btn} 
+            disabled={loading} 
+            style={{ marginTop: '1rem' }}>
+           {loading ? 'Signing in...' : 'Sign In'}
           </button>
         </form>
+
         <p style={{ marginTop: '1rem', color: '#a0a0a0', fontSize: '0.9rem', textAlign: 'center' }}>
           No account? <Link to="/register" style={{ color: '#fff' }}>Register</Link>
         </p>
