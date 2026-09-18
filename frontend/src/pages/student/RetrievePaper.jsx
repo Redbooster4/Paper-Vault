@@ -43,8 +43,7 @@ export default function RetrievePaper() {
   return (
     <div className={styles.container}>
       <h1 className={styles.title}>Retrieve Paper</h1>
-      <p className={styles.subtitle}>Download an exam paper you've been granted access to.</p>
-
+      
       {!isConnected && (
         <div className={styles.walletBox}>
           <p>Connect your wallet to verify access</p>

@@ -29,8 +29,7 @@ export default function AdminDashboard() {
     <div className={styles.container}>
       <div className={styles.header}>
         <h1 className={styles.title}>Exam Board Dashboard</h1>
-        <p className={styles.subtitle}>Manage exam papers, grant access, and monitor activity</p>
-      </div>
+              </div>
 
       {/* Quick Actions */}
       <div className={styles.actions}>

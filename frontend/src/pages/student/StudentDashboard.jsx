@@ -8,8 +8,7 @@ export default function StudentDashboard() {
   return (
     <div className={styles.container}>
       <h1 className={styles.title}>Student Dashboard</h1>
-      <p className={styles.subtitle}>Retrieve your authorized exam papers.</p>
-
+      
       {isConnected && (
         <p className={styles.walletInfo}>
           Connected Wallet: <code>{account}</code>

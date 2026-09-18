@@ -6,10 +6,7 @@ export default function LandingPage(){
     <div className={styles.container}>
       <div className={styles.hero}>
         <h1 className={styles.title}>Welcome to Paper Vault</h1>
-        <p className={styles.subtitle}>
-          Secure exam paper distribution powered by blockchain. Upload, encrypt, and distribute papers with time-locked access control.
-        </p>
-        
+                
         <div className={styles.actions}>
           <Link to="/register" className={styles.primaryBtn}>Get Started</Link>
           <Link to="/login" className={styles.secondaryBtn}>Sign In</Link>

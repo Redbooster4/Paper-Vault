@@ -16,8 +16,7 @@ export default function AuditLog() {
   return (
     <div className={styles.container}>
       <h1 className={styles.title}> Chain History</h1>
-      <p className={styles.subtitle}>Raw on-chain events from the Exam Registry contract.</p>
-      
+            
       <div className={styles.card}>
         {loading ? (
           <p className={styles.empty}>Fetching blocks...</p>

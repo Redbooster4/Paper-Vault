@@ -69,10 +69,7 @@ export default function GrantAccess() {
   return (
     <div className={styles.container}>
       <h1 className={styles.title}> Grant Access</h1>
-      <p className={styles.subtitle}>
-        Authorize wallet addresses to retrieve an exam paper after it's released.
-      </p>
-
+      
       <form onSubmit={bulkMode ? handleBulkGrant : handleSingleGrant} className={styles.form}>
         <div className={styles.field}>
           <label htmlFor="examName" className={styles.label}>Exam Name</label>

@@ -42,10 +42,7 @@ export default function UploadPaper() {
   return (
     <div className={styles.container}>
       <h1 className={styles.title}> Upload Exam Paper</h1>
-      <p className={styles.subtitle}>
-        Upload a PDF exam paper. It will be AES-256 encrypted and registered on the blockchain.
-      </p>
-
+      
       <form onSubmit={handleSubmit} className={styles.form}>
         <div className={styles.field}>
           <label className={styles.label}>Exam Paper (PDF)</label>

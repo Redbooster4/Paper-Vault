@@ -29,8 +29,7 @@ export default function PaperDetails() {
   return (
     <div className={styles.container}>
       <h1 className={styles.title}> Paper Details</h1>
-      <p className={styles.subtitle}>Look up on-chain metadata for any registered exam paper.</p>
-
+      
       <form onSubmit={handleLookup} className={styles.searchForm}>
         <input
           type="text"
