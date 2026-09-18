@@ -4,7 +4,7 @@ export const uploadPaper = async (file, examName, releaseTimestamp) => {
   const formData = new FormData();
   formData.append('paper', file);
   formData.append('examName', examName);
-  formData.append('releaseTimestamp', releaseTimestamp);
+  formData.append('timeStamp', releaseTimestamp);
   const { data } = await api.post('/exam/upload', formData, {
     headers: { 'Content-Type': 'multipart/form-data' },
   });

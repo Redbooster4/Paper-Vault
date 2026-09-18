@@ -23,36 +23,23 @@ export default function FileDropzone({ onFileSelect, accept = '.pdf', disabled =
   }, [disabled, handleFile]);
 
   return (
-    <div className="wrapper">
     <div className={styles.wrapper}>
       {!selectedFile ? (
         <div
-          className={`${'dropzone'} ${dragOver ? 'dragOver' : ''} ${disabled ? 'disabled' : ''}`}
           className={`${styles.dropzone} ${dragOver ? styles.dragOver : ''} ${disabled ? styles.disabled : ''}`}
           onDrop={handleDrop}
           onDragOver={(e) => { e.preventDefault(); if (!disabled) setDragOver(true); }}
           onDragLeave={() => setDragOver(false)}
           onClick={() => { if (!disabled) inputRef.current?.click(); }}
         >
-          <input ref={inputRef} type="file" accept={accept} onChange={(e) => handleFile(e.target.files[0])} className="hiddenInput" disabled={disabled} />
-          <div className="iconCircle">
-            
           <input ref={inputRef} type="file" accept={accept} onChange={(e) => handleFile(e.target.files[0])} className={styles.hiddenInput} disabled={disabled} />
           <div className={styles.iconCircle}>
             <UploadCloud className={styles.uploadIcon} />
           </div>
-          <h3 className="title">Click or drag file to this area to upload</h3>
-          <p className="subtitle">Strictly prohibit from uploading company data or other banned files.</p>
           <h3 className={styles.title}>Click or drag file to this area to upload</h3>
           <p className={styles.subtitle}>Strictly prohibit from uploading company data or other banned files.</p>
         </div>
       ) : (
-        <div className="fileCard">
-          <div className="fileCardInner">
-            
-            <div className="fileDetails">
-              <span className="fileName">{selectedFile.name}</span>
-              <span className="fileSize">{(selectedFile.size / 1024 / 1024).toFixed(2)} MB</span>
         <div className={styles.fileCard}>
           <div className={styles.fileCardInner}>
             <File className={styles.fileIcon} />
@@ -60,9 +47,6 @@ export default function FileDropzone({ onFileSelect, accept = '.pdf', disabled =
               <span className={styles.fileName}>{selectedFile.name}</span>
               <span className={styles.fileSize}>{(selectedFile.size / 1024 / 1024).toFixed(2)} MB</span>
             </div>
-            
-            <button className="removeBtn" onClick={(e) => { e.stopPropagation(); setSelectedFile(null); onFileSelect(null); }}>
-              
             <CheckCircle className={styles.successIcon} />
             <button type="button" className={styles.removeBtn} onClick={(e) => { e.stopPropagation(); setSelectedFile(null); onFileSelect(null); }}>
               <X />

@@ -37,9 +37,12 @@ router.post('/login', async(req, res) => {
       return res.status(400).json({ error: 'Email and password required' });
     }
 
-    const user=users.find(u => u.email === email);
-    const pass=await bcrypt.compare(password, user.password);
-    if(!user || !pass){
+    const user = users.find(u => u.email === email);
+    if (!user) {
+      return res.status(401).json({ error: 'Invalid credentials' });
+    }
+    const pass = await bcrypt.compare(password, user.password);
+    if (!pass) {
       return res.status(401).json({ error: 'Invalid credentials' });
     }
 

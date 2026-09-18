@@ -49,7 +49,7 @@ export default function UploadPaper() {
       <form onSubmit={handleSubmit} className={styles.form}>
         <div className={styles.field}>
           <label className={styles.label}>Exam Paper (PDF)</label>
-          
+          <FileDropzone onFileSelect={setFile} disabled={loading} />
         </div>
 
         <div className={styles.field}>

@@ -40,7 +40,7 @@ export default function Register(){
 
   return(
     <div className={styles.container}>
-      <div className={styles.card} style={{ maxWidth: '400px', margin: '4rem auto' }}>
+      <div className={styles.card} style={{ width: '100%', margin: '4rem auto' }}>
         <h1 className={styles.title} style={{ fontSize: '1.75rem' }}>Create Account</h1>
         <form onSubmit={handleSubmit} className={styles.form}>
           <div className={styles.field}>
