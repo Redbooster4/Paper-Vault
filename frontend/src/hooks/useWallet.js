@@ -32,11 +32,13 @@ export default function useWallet(){
       setChainId(chain);
       toast.success('Wallet connected!');
       return accounts[0];
-    } catch (err){
+    } 
+    catch (err){
       setError(err.message);
       toast.error(err.message || 'Failed to connect wallet');
       return null;
-    } finally{
+    } 
+    finally{
       setIsConnecting(false);
     }
   }, []);
@@ -46,8 +48,8 @@ export default function useWallet(){
     setChainId(null);
   }, []);
 
-  useEffect(() =>{
-    if (!window.ethereum) return;
+  useEffect(() => {
+    if(!window.ethereum) return;
 
     const handleAccountsChanged=(accounts) =>{
       setAccount(accounts[0] || null);
@@ -58,16 +60,14 @@ export default function useWallet(){
 
     window.ethereum.on('accountsChanged', handleAccountsChanged);
     window.ethereum.on('chainChanged', handleChainChanged);
-
-    // Check if already connected
     window.ethereum.request({ method: 'eth_accounts' }).then((accounts) =>{
-      if (accounts.length > 0){
+      if(accounts.length > 0){
         setAccount(accounts[0]);
         window.ethereum.request({ method: 'eth_chainId' }).then(setChainId);
       }
     });
 
-    return () =>{
+    return ()=>{
       window.ethereum.removeListener('accountsChanged', handleAccountsChanged);
       window.ethereum.removeListener('chainChanged', handleChainChanged);
     };
