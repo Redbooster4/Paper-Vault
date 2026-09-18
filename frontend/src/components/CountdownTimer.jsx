@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import styles from '../styles/CountdownTimer.module.css';
 
 export default function CountdownTimer({ releaseTimestamp }) {
   const [timeLeft, setTimeLeft] = useState(null);
@@ -23,29 +24,29 @@ export default function CountdownTimer({ releaseTimestamp }) {
   }, [releaseTimestamp]);
 
   if (!timeLeft) {
-    return <span className="released">✓ Released</span>;
+    return <span className={styles.released}>✓ Released</span>;
   }
 
   return (
-    <div className="timer">
-      <div className="unit">
-        <span className="value">{String(timeLeft.days).padStart(2, '0')}</span>
-        <span className="label">Days</span>
+    <div className={styles.timer}>
+      <div className={styles.unit}>
+        <span className={styles.value}>{String(timeLeft.days).padStart(2, '0')}</span>
+        <span className={styles.label}>Days</span>
       </div>
-      <span className="sep">:</span>
-      <div className="unit">
-        <span className="value">{String(timeLeft.hours).padStart(2, '0')}</span>
-        <span className="label">Hrs</span>
+      <span className={styles.sep}>:</span>
+      <div className={styles.unit}>
+        <span className={styles.value}>{String(timeLeft.hours).padStart(2, '0')}</span>
+        <span className={styles.label}>Hrs</span>
       </div>
-      <span className="sep">:</span>
-      <div className="unit">
-        <span className="value">{String(timeLeft.minutes).padStart(2, '0')}</span>
-        <span className="label">Min</span>
+      <span className={styles.sep}>:</span>
+      <div className={styles.unit}>
+        <span className={styles.value}>{String(timeLeft.minutes).padStart(2, '0')}</span>
+        <span className={styles.label}>Min</span>
       </div>
-      <span className="sep">:</span>
-      <div className="unit">
-        <span className="value">{String(timeLeft.seconds).padStart(2, '0')}</span>
-        <span className="label">Sec</span>
+      <span className={styles.sep}>:</span>
+      <div className={styles.unit}>
+        <span className={styles.value}>{String(timeLeft.seconds).padStart(2, '0')}</span>
+        <span className={styles.label}>Sec</span>
       </div>
     </div>
   );

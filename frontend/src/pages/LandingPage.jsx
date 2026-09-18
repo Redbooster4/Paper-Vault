@@ -1,5 +1,5 @@
+import styles from '../styles/shared.module.css';
 import{ Link } from 'react-router-dom';
-import styles from '../styles/LandingPage.module.css';
 
 export default function LandingPage(){
   return(

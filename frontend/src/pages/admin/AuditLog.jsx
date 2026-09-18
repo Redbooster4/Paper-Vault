@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { getAuditLogs } from '../../services/examService';
-import styles from '../../styles/AuditLog.module.css';
+import styles from '../../styles/shared.module.css';
 
 export default function AuditLog() {
   const [logs, setLogs] = useState([]);

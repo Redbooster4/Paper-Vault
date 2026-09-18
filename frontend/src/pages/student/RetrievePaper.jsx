@@ -3,7 +3,7 @@ import { retrievePaper, getPaperInfo } from '../../services/examService';
 import { useOutletContext } from 'react-router-dom';
 import CountdownTimer from '../../components/CountdownTimer';
 import toast from 'react-hot-toast';
-import styles from '../../styles/RetrievePaper.module.css';
+import styles from '../../styles/shared.module.css';
 
 export default function RetrievePaper() {
   const { account, isConnected, isConnecting, connectWallet } = useOutletContext();

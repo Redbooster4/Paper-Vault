@@ -8,11 +8,10 @@ export function AuthProvider({ children }) {
   const [token, setToken] = useState(null);
   const [loading, setLoading] = useState(true);
 
-  // Restore session from localStorage on mount
   useEffect(() => {
     const savedToken = localStorage.getItem('pv_token');
     const savedUser = localStorage.getItem('pv_user');
-    if (savedToken && savedUser) {
+    if (savedToken && savedUser){
       setToken(savedToken);
       setUser(JSON.parse(savedUser));
     }
@@ -41,7 +40,6 @@ export function AuthProvider({ children }) {
   }, []);
 
   const value = { user, token, loading, login, register, logout, isAuthenticated: !!token };
-
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 }
 

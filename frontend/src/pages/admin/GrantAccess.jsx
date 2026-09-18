@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { grantAccess } from '../../services/examService';
 import toast from 'react-hot-toast';
-import styles from '../../styles/GrantAccess.module.css';
+import styles from '../../styles/shared.module.css';
 
 export default function GrantAccess() {
   const [examName, setExamName] = useState('');
@@ -90,14 +90,14 @@ export default function GrantAccess() {
         <div className={styles.modeToggle}>
           <button
             type="button"
-            className={`${styles.modeBtn} ${!bulkMode ? styles.active : ''}`}
+            className={`${'modeBtn'} ${!bulkMode ? 'active' : ''}`}
             onClick={() => setBulkMode(false)}
           >
             Single Address
           </button>
           <button
             type="button"
-            className={`${styles.modeBtn} ${bulkMode ? styles.active : ''}`}
+            className={`${'modeBtn'} ${bulkMode ? 'active' : ''}`}
             onClick={() => setBulkMode(true)}
           >
             Bulk Mode
@@ -145,7 +145,7 @@ export default function GrantAccess() {
           <h3 className={styles.resultsTitle}>Results</h3>
           <div className={styles.resultsList}>
             {results.map((r, i) => (
-              <div key={i} className={`${styles.resultItem} ${r.status === 'success' ? styles.resultSuccess : styles.resultError}`}>
+              <div key={i} className={`${'resultItem'} ${r.status === 'success' ? 'resultSuccess' : 'resultError'}`}>
                 {r.status === 'success' ? '✅' : '❌'}
                 <span className={styles.resultAddr}>
                   {r.address.slice(0, 10)}...{r.address.slice(-6)}

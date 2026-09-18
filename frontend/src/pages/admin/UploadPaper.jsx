@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { uploadPaper } from '../../services/examService';
 import FileDropzone from '../../components/FileDropzone';
 import toast from 'react-hot-toast';
-import styles from '../../styles/UploadPaper.module.css';
+import styles from '../../styles/shared.module.css';
 
 export default function UploadPaper() {
   const [file, setFile] = useState(null);

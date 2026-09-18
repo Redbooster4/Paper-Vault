@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link, useOutletContext } from 'react-router-dom';
-import styles from '../../styles/StudentDashboard.module.css';
+import styles from '../../styles/shared.module.css';
 
 export default function StudentDashboard() {
   const { account, isConnected } = useOutletContext();

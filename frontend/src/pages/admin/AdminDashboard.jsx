@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { getPaperInfo } from '../../services/examService';
 import CountdownTimer from '../../components/CountdownTimer';
 import toast from 'react-hot-toast';
-import styles from '../../styles/AdminDashboard.module.css';
+import styles from '../../styles/shared.module.css';
 
 export default function AdminDashboard() {
   const [searchName, setSearchName] = useState('');

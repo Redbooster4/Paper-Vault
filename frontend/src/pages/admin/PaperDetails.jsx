@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import { getPaperInfo } from '../../services/examService';
 import CountdownTimer from '../../components/CountdownTimer';
 import toast from 'react-hot-toast';
-import styles from '../../styles/PaperDetails.module.css';
+import styles from '../../styles/shared.module.css';
 
 export default function PaperDetails() {
   const { examName: paramName } = useParams();
