@@ -8,7 +8,6 @@ import ProtectedRoute from './components/ProtectedRoute';
 import LandingPage from './pages/LandingPage';
 import Login from './pages/Login';
 import Register from './pages/Register';
-import NotFound from './pages/NotFound';
 import AdminDashboard from './pages/admin/AdminDashboard';
 import UploadPaper from './pages/admin/UploadPaper';
 import GrantAccess from './pages/admin/GrantAccess';

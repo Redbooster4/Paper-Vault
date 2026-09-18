@@ -3,24 +3,19 @@ const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const router = express.Router();
 
-// In-memory store (prototype — no DB)
 const users = [];
-
-router.post('/register', async (req, res) =>{
+router.post('/register', async(req, res) => {
   try{
     const{ username, email, password, role } = req.body;
-    if (!username || !email || !password || !role){
+    if(!username || !email || !password || !role){
       return res.status(400).json({ error: 'All fields required' });
     }
-    if (!['admin', 'student'].includes(role)){
-      return res.status(400).json({ error: 'Role must be admin or student' });
-    }
-    if (users.find(u => u.email === email)){
+    if(users.find(u => u.email === email)){
       return res.status(409).json({ error: 'Email already registered' });
     }
 
-    const hash = await bcrypt.hash(password, 10);
-    const user ={ 
+    const hash=await bcrypt.hash(password, 10);
+    const user= { 
       id: users.length + 1, 
       username, 
       email, 
@@ -28,23 +23,23 @@ router.post('/register', async (req, res) =>{
       role
     };
     users.push(user);
-
     res.json({ success: true, message: 'Registered successfully' });
   } 
-  catch (err){
+  catch(err){
     res.status(500).json({ error: err.message });
   }
 });
 
-router.post('/login', async (req, res) =>{
+router.post('/login', async(req, res) => {
   try{
     const{ email, password } = req.body;
-    if (!email || !password){
+    if(!email || !password){
       return res.status(400).json({ error: 'Email and password required' });
     }
 
-    const user = users.find(u => u.email === email);
-    if (!user || !(await bcrypt.compare(password, user.password))){
+    const user=users.find(u => u.email === email);
+    const pass=await bcrypt.compare(password, user.password);
+    if(!user || !pass){
       return res.status(401).json({ error: 'Invalid credentials' });
     }
 
@@ -62,10 +57,13 @@ router.post('/login', async (req, res) =>{
     res.json({
       success: true,
       token,
-      user:{ email: user.email, username: user.username, role: user.role },
+      user:{ 
+        email: user.email, 
+        username: user.username, 
+        role: user.role },
     });
   } 
-  catch (err){
+  catch(err){
     res.status(500).json({ error: err.message });
   }
 });
