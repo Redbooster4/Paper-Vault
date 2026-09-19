@@ -20,7 +20,7 @@
         {
           "indexed": true,
           "internalType": "address",
-          "name": "student",
+          "name": "printer",
           "type": "address"
         }
       ],
@@ -39,7 +39,7 @@
         {
           "indexed": true,
           "internalType": "address",
-          "name": "student",
+          "name": "printer",
           "type": "address"
         },
         {
@@ -123,7 +123,7 @@
         },
         {
           "internalType": "address",
-          "name": "student",
+          "name": "printer",
           "type": "address"
         }
       ],
@@ -176,7 +176,7 @@
         },
         {
           "internalType": "address",
-          "name": "student",
+          "name": "printer",
           "type": "address"
         }
       ],
@@ -194,7 +194,7 @@
         },
         {
           "internalType": "address",
-          "name": "student",
+          "name": "printer",
           "type": "address"
         }
       ],

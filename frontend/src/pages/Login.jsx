@@ -22,7 +22,7 @@ export default function Login(){
     try{
       const user = await login(email, password);
       toast.success('Welcome back!');
-      navigate(user.role === 'admin'?'/admin':'/student');
+      navigate(user.role === 'admin'?'/admin':'/printer');
     } 
     catch(err){
       toast.error(err.response?.data?.error);
@@ -75,3 +75,4 @@ export default function Login(){
     </div>
   );
 }
+

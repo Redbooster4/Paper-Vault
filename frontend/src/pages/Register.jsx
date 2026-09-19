@@ -8,7 +8,8 @@ export default function Register(){
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [role, setRole] = useState('student');
+  const [walletAddress, setWalletAddress] = useState('');
+  const [role, setRole] = useState('printer');
   const [loading, setLoading] = useState(false);
   const { register } = useAuth();
   const navigate = useNavigate();
@@ -26,7 +27,7 @@ export default function Register(){
 
     setLoading(true);
     try{
-      await register(username, email, password, role);
+      await register(username, email, password, role, walletAddress);
       toast.success('Account created! Please sign in.');
       navigate('/login');
     } 
@@ -45,17 +46,41 @@ export default function Register(){
         <form onSubmit={handleSubmit} className={styles.form}>
           <div className={styles.field}>
             <label className={styles.label}>Username</label>
-            <input className={styles.input} value={username} onChange={e => setUsername(e.target.value)} disabled={loading} />
+            <input 
+              className={styles.input} 
+              value={username} 
+              onChange={e => setUsername(e.target.value)} 
+              disabled={loading}/>
           </div>
 
           <div className={styles.field}>
             <label className={styles.label}>Email</label>
-            <input type="email" className={styles.input} value={email} onChange={e => setEmail(e.target.value)} disabled={loading} />
+            <input 
+              type="email" 
+              className={styles.input} 
+              value={email} 
+              onChange={e => setEmail(e.target.value)} 
+              disabled={loading}/>
           </div>
 
           <div className={styles.field}>
             <label className={styles.label}>Password</label>
-            <input type="password" className={styles.input} value={password} onChange={e => setPassword(e.target.value)} disabled={loading} />
+            <input 
+            type="password" 
+            className={styles.input}
+            value={password} 
+            onChange={e => setPassword(e.target.value)} 
+            disabled={loading}/>
+          </div>
+
+          <div className={styles.field}>
+            <label className={styles.label}>Wallet Address(Optional)</label>
+            <input 
+              type="text" 
+              className={styles.input} 
+              value={walletAddress} 
+              onChange={e => setWalletAddress(e.target.value)} 
+              disabled={loading}/>
           </div>
 
           <div className={styles.field} style={{ display: 'flex', gap: '10px', marginTop: '0.5rem' }}>
@@ -63,16 +88,15 @@ export default function Register(){
             <button 
               type="button" 
               className={styles.btn} 
-              style={{ flex: 1, background: role === 'student' ? '#fff' : 'transparent', color: role === 'student' ? '#000' : '#fff', border: '1px solid #555' }}
-              onClick={() => setRole('student')}>
-                Student
+              style={{ flex: 1, background: role === 'printer' ? '#fff' : 'transparent', color: role === 'printer' ? '#000' : '#fff', border: '1px solid #555' }}
+              onClick={() => setRole('printer')}>
+                Printer
             </button>
             <button 
               type="button" 
               className={styles.btn} 
               style={{ flex: 1, background: role === 'admin' ? '#fff' : 'transparent', color: role === 'admin' ? '#000' : '#fff', border: '1px solid #555' }}
-              onClick={() => setRole('admin')}
-            >
+              onClick={() => setRole('admin')}>
               Exam Board
             </button>
           </div>

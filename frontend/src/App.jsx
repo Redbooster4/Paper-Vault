@@ -13,8 +13,8 @@ import UploadPaper from './pages/admin/UploadPaper';
 import GrantAccess from './pages/admin/GrantAccess';
 import PaperDetails from './pages/admin/PaperDetails';
 import AuditLog from './pages/admin/AuditLog';
-import StudentDashboard from './pages/student/StudentDashboard';
-import RetrievePaper from './pages/student/RetrievePaper';
+import PrinterDashboard from './pages/printer/PrinterDashboard';
+import RetrievePaper from './pages/printer/RetrievePaper';
 
 function AppRoutes() {
   const wallet = useWallet();
@@ -32,8 +32,8 @@ function AppRoutes() {
         <Route path="/admin/papers/:examName" element={<ProtectedRoute requiredRole="admin"><PaperDetails /></ProtectedRoute>} />
         <Route path="/admin/audit-log" element={<ProtectedRoute requiredRole="admin"><AuditLog /></ProtectedRoute>} />
 
-        <Route path="/student" element={<ProtectedRoute requiredRole="student"><StudentDashboard /></ProtectedRoute>} />
-        <Route path="/student/retrieve" element={<ProtectedRoute requiredRole="student"><RetrievePaper /></ProtectedRoute>} />
+        <Route path="/printer" element={<ProtectedRoute requiredRole="printer"><PrinterDashboard /></ProtectedRoute>} />
+        <Route path="/printer/retrieve" element={<ProtectedRoute requiredRole="printer"><RetrievePaper /></ProtectedRoute>} />
       </Route>
     </Routes>
   );
@@ -49,3 +49,4 @@ export default function App() {
     </BrowserRouter>
   );
 }
+

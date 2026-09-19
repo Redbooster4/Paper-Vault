@@ -13,6 +13,7 @@ const{
   getPaper,
   getAuditLogs,
 }=require("../services/blockchain.service");
+const { addPaper } = require("../services/registry.service");
 
 const upload=multer();
 router.post("/upload", upload.single("paper"), async(req, res) => {
@@ -28,6 +29,7 @@ router.post("/upload", upload.single("paper"), async(req, res) => {
     const fileName=`${examId}.enc`;
     saveFile(encrypted, fileName);
     await registerPaper(examId, fileName, timeStamp);
+    addPaper(examId, examName, timeStamp);
 
     res.json({ success: true, examId, storedAs: fileName });
   } 

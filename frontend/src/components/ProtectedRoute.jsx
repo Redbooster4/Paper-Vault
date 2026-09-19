@@ -3,7 +3,7 @@ import { useAuth } from '../context/AuthContext';
 import styles from '../styles/shared.module.css';
 
 export default function ProtectedRoute({ children, requiredRole }) {
-  const { isAuthenticated, user, loading } = useAuth();
+  const { isAuthenticated, user, loading, logout } = useAuth();
 
   if (loading) {
     return <div className={styles.container} style={{ textAlign: 'center', marginTop: '5rem' }}>Loading...</div>;
@@ -12,10 +12,17 @@ export default function ProtectedRoute({ children, requiredRole }) {
   if (!isAuthenticated) {
     return <Navigate to="/login" replace />;
   }
+  
+  // Handle legacy local storage
+  if (user?.role === 'student') {
+    logout();
+    return <Navigate to="/login" replace />;
+  }
 
   if (requiredRole && user?.role !== requiredRole) {
-    return <Navigate to={user?.role === 'admin' ? '/admin' : '/student'} replace />;
+    return <Navigate to={user?.role === 'admin' ? '/admin' : '/printer'} replace />;
   }
 
   return children;
 }
+

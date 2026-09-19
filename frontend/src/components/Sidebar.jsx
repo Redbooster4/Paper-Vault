@@ -10,22 +10,22 @@ const adminLinks = [
   { to: '/admin/audit-log', label: 'Audit Log', icon: FileText },
 ];
 
-const studentLinks = [
-  { to: '/student', label: 'Dashboard', icon: Home },
-  { to: '/student/retrieve', label: 'Retrieve Paper', icon: Download },
+const printerLinks = [
+  { to: '/printer', label: 'Dashboard', icon: Home },
+  { to: '/printer/retrieve', label: 'Retrieve Paper', icon: Download },
 ];
 
 export default function Sidebar() {
   const { user } = useAuth();
   const location = useLocation();
-  const items = user?.role === 'admin' ? adminLinks : (user?.role === 'student' ? studentLinks : []);
+  const items = user?.role === 'admin' ? adminLinks : (user?.role === 'printer' ? printerLinks : []);
 
   return (
     <aside className={styles.sidebar}>
       <div className={styles.sidebarInner}>
         <div className={styles.navGroup}>
           {items.map(({ to, label, icon: Icon }) => {
-            const isActive = location.pathname === to || (to !== '/admin' && to !== '/student' && location.pathname.startsWith(to));
+            const isActive = location.pathname === to || (to !== '/admin' && to !== '/printer' && location.pathname.startsWith(to));
             return (
               <NavLink
                 key={to}
@@ -45,3 +45,4 @@ export default function Sidebar() {
     </aside>
   );
 }
+

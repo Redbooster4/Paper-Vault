@@ -1,5 +1,6 @@
 import{ useState, useEffect, useCallback } from 'react';
 import toast from 'react-hot-toast';
+import api from '../services/api';
 
 export default function useWallet(){
   const [account, setAccount]=useState(null);
@@ -8,6 +9,16 @@ export default function useWallet(){
   const [error, setError]=useState(null);
 
   const isConnected=!!account;
+  
+  const syncWalletToDB = async (walletAddress) => {
+    if (localStorage.getItem('pv_token') && walletAddress) {
+      try {
+        await api.put('/auth/wallet', { walletAddress });
+      } catch (err) {
+        console.error("Failed to sync wallet", err);
+      }
+    }
+  };
 
   const connectWallet=useCallback(async () =>{
     if (!window.ethereum){
@@ -30,6 +41,7 @@ export default function useWallet(){
       const chain=await window.ethereum.request({ method: 'eth_chainId' });
       setAccount(accounts[0]);
       setChainId(chain);
+      await syncWalletToDB(accounts[0]);
       toast.success('Wallet connected!');
       return accounts[0];
     } 
@@ -52,7 +64,9 @@ export default function useWallet(){
     if(!window.ethereum) return;
 
     const handleAccountsChanged=(accounts) =>{
-      setAccount(accounts[0] || null);
+      const acc = accounts[0] || null;
+      setAccount(acc);
+      if (acc) syncWalletToDB(acc);
     };
     const handleChainChanged=(chain) =>{
       setChainId(chain);
@@ -64,6 +78,7 @@ export default function useWallet(){
       if(accounts.length > 0){
         setAccount(accounts[0]);
         window.ethereum.request({ method: 'eth_chainId' }).then(setChainId);
+        syncWalletToDB(accounts[0]);
       }
     });
 
